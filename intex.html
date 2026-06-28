@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Form Modal</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg,#4facfe,#00f2fe);
+    }
+
+    /* Open Button */
+    .open-btn{
+      padding:12px 25px;
+      border:none;
+      background:#fff;
+      color:#333;
+      font-size:18px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .open-btn:hover{
+      background:#222;
+      color:#fff;
+    }
+
+    /* Modal Background */
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:1;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.6);
+      justify-content:center;
+      align-items:center;
+    }
+
+    /* Modal Box */
+    .modal-content{
+      background:#fff;
+      padding:30px;
+      width:350px;
+      border-radius:15px;
+      position:relative;
+      animation:popup 0.4s ease;
+    }
+
+    @keyframes popup{
+      from{
+        transform:scale(0.7);
+        opacity:0;
+      }
+      to{
+        transform:scale(1);
+        opacity:1;
+      }
+    }
+
+    /* Close Button */
+    .close{
+      position:absolute;
+      top:15px;
+      right:20px;
+      font-size:25px;
+      cursor:pointer;
+      color:#555;
+    }
+
+    .close:hover{
+      color:red;
+    }
+
+    .modal-content h2{
+      text-align:center;
+      margin-bottom:20px;
+      color:#333;
+    }
+
+    .input-box{
+      margin-bottom:15px;
+    }
+
+    .input-box input{
+      width:100%;
+      padding:12px;
+      border:1px solid #ccc;
+      border-radius:8px;
+      outline:none;
+      font-size:16px;
+    }
+
+    .login-btn{
+      width:100%;
+      padding:12px;
+      border:none;
+      background:#4facfe;
+      color:#fff;
+      font-size:18px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .login-btn:hover{
+      background:#007bff;
+    }
+
+    .extra{
+      text-align:center;
+      margin-top:15px;
+      font-size:14px;
+    }
+
+    .extra a{
+      text-decoration:none;
+      color:#007bff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Open Modal Button -->
+  <button class="open-btn" onclick="openModal()">
+    Login
+  </button>
+
+  <!-- Modal -->
+  <div class="modal" id="loginModal">
+    
+    <div class="modal-content">
+      
+      <span class="close" onclick="closeModal()">&times;</span>
+
+      <h2>Login Form</h2>
+
+      <form>
+        <div class="input-box">
+          <input type="email" placeholder="Enter Email" required>
+        </div>
+
+        <div class="input-box">
+          <input type="password" placeholder="Enter Password" required>
+        </div>
+
+        <button type="submit" class="login-btn">
+          Login
+        </button>
+
+        <div class="extra">
+          Don't have an account?
+          <a href="#">Register</a>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("loginModal");
+
+    function openModal(){
+      modal.style.display = "flex";
+    }
+
+    function closeModal(){
+      modal.style.display = "none";
+    }
+
+    // Close when clicking outside
+    window.onclick = function(event){
+      if(event.target == modal){
+        modal.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>
